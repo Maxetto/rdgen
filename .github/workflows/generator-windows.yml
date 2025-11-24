@@ -3,16 +3,6 @@ run-name: Custom Windows Client Generator
 on: 
   workflow_dispatch:
     inputs:
-      server:
-        description: 'Rendezvous Server'
-        required: true
-        default: ''
-        type: string
-      key:
-        description: 'Public Key'
-        required: true
-        default: ''
-        type: string
       apiServer:
         description: 'API Server'
         required: true
