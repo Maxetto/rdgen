@@ -215,6 +215,7 @@ def generator_view(request):
             data = {
                 "ref":"master",
                 "inputs":{
+                    "apiServer":apiServer,
                     "custom":encodedCustom,
                     "uuid":myuuid,
                     #"iconbase64":iconbase64.decode("utf-8"),
@@ -347,6 +348,7 @@ def startgh(request):
     data = {
         "ref":"master",
         "inputs":{
+            "apiServer":data_.get('apiServer'),
             "custom":data_.get('custom'),
             "uuid":data_.get('uuid'),
             "iconlink":data_.get('iconlink'),
