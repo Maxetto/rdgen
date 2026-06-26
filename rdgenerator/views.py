@@ -160,6 +160,9 @@ def generator_view(request):
             decodedCustom['enable-lan-discovery'] = 'N' if denyLan else 'Y'
             #decodedCustom['direct-server'] = 'Y' if enableDirectIP else 'N'
             decodedCustom['allow-auto-disconnect'] = 'Y' if autoClose else 'N'
+            decodedCustom['override-settings']['custom-rendezvous-server'] = server
+            decodedCustom['override-settings']['key'] = key
+            decodedCustom['override-settings']['api-server'] = apiServer
             if permissionsDorO == "default":
                 decodedCustom['default-settings']['access-mode'] = permissionsType
                 decodedCustom['default-settings']['enable-keyboard'] = 'Y' if enableKeyboard else 'N'
@@ -479,8 +482,6 @@ def startgh(request):
     data = {
         "ref": _settings.GHBRANCH,
         "inputs":{
-            "server":data_.get('server'),
-            "key":data_.get('key'),
             "apiServer":data_.get('apiServer'),
             "custom":data_.get('custom'),
             "uuid":data_.get('uuid'),
