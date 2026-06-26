@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'version to buld'
+        description: 'version to build'
         required: true
         default: ''
         type: string
@@ -239,16 +239,6 @@ jobs:
           sed -i -e 's|https://rustdesk.com/download|${{ env.downloadLink }}|' ./flutter/lib/desktop/pages/desktop_home_page.dart
           sed -i -e 's|https://rustdesk.com/download|${{ env.downloadLink }}|' ./flutter/lib/mobile/pages/connection_page.dart
           sed -i -e 's|https://rustdesk.com/download|${{ env.downloadLink }}|' ./src/ui/index.tis
-
-      - name: set server, key, and apiserver
-        continue-on-error: true
-        shell: bash
-        run: |
-          sed -i -e 's|rs-ny.rustdesk.com|${{ env.server }}|' ./libs/hbb_common/src/config.rs
-          sed -i -e 's|OeVuKk5nlHiXp+APNn0Y3pC1Iwpwn44JGqrQCsWqmBw=|${{ env.key }}|' ./libs/hbb_common/src/config.rs
-          sed -i -e 's|https://admin.rustdesk.com|${{ env.apiServer }}|' ./src/common.rs
-          # ./flutter/pubspec.yaml
-          #sed -i '/intl:/a \ \ archive: ^3.6.1' ./flutter/pubspec.yaml
 
       - name: allow custom.txt
         uses: nick-fields/retry@v3
